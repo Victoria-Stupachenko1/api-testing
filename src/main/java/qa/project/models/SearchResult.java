@@ -3,45 +3,40 @@ package qa.project.models;
 import com.google.gson.annotations.SerializedName;
 
 public class SearchResult {
-    @SerializedName("Id")
-    public String Id;
-    @SerializedName("ResultType")
-    public String ResultType;
-    @SerializedName("Image")
-    public String Image;
-    @SerializedName("Title")
-    public String Title;
-    @SerializedName("Description")
-    public String Description;
+    public String id;
+    public String resultType;
+    public String image;
+    public String title;
+    public String description;
 
     @Override
     public String toString() {
         return "SearchResult{" +
-                "Id='" + Id + '\'' +
-                ", ResultType='" + ResultType + '\'' +
-                ", Image='" + Image + '\'' +
-                ", Title='" + Title + '\'' +
-                ", Description='" + Description + '\'' +
+                "id='" + id + '\'' +
+                ", resultType='" + resultType + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public String getResultType() {
-        return ResultType;
+        return resultType;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 }

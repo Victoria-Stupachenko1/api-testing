@@ -3,16 +3,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class MovieSearchResponse {
-    @SerializedName("SearchType")
     private String searchType;
-
-    @SerializedName("Expression")
     private String expression;
-
-    @SerializedName("Results")
     private List<SearchResult> results;
-
-    @SerializedName("ErrorMessage")
     private String errorMessage;
 
     // Add getters and setters for the fields
