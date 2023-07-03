@@ -11,7 +11,7 @@ import java.io.IOException;
 import static org.testng.Assert.*;
 
 
-public class ApiTest1 {
+public class ImdbApiTests {
     private ImdbApi imdbApiClient = new ImdbApi();
     private String apiKey = "k_kw0qy43q";
 
