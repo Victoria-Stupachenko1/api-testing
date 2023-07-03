@@ -1,7 +1,9 @@
 package qa.project;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import qa.project.models.AdvancedSearchData;
+import qa.project.models.AdvancedSearchResult;
 import qa.project.models.MovieSearchResponse;
 
 import java.io.IOException;
@@ -54,14 +56,10 @@ public class ApiTest1 {
     public void AdvancedSearchMovie2() throws IOException {
         AdvancedSearchData advancedSearch3 = imdbApiClient.movieAdvancedSearch.advancedSearchMovie2(apiKey, "comedy,thriller").execute().body();
         System.out.println(advancedSearch3);
-        //For getting "Result is correct" - set get(0); for getting else result - set get(1)
-        if (advancedSearch3.getResults().get(0).getGenres().contains("Comedy") || advancedSearch3.getResults().get(0).getGenres().contains("Thriller")) {
-            System.out.println("Result is correct");
-        } else {
-            String title = advancedSearch3.getResults().get(0).getTitle();
-            String genreList = advancedSearch3.getResults().get(0).getGenres();
-            System.out.println(title + " has differ genres " + genreList);
-        }
+        //For passed - set get(0); for fail - set get(1)
+        AdvancedSearchResult firstResult = advancedSearch3.getResults().get(1);
+        String genres = firstResult.getGenres();
+        Assert.assertTrue(genres.contains("Comedy") || genres.contains("Thriller"), firstResult.getTitle() + " has differ genres " + firstResult.getGenres());
     }
 }
 
