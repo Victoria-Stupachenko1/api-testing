@@ -1,28 +1,16 @@
 package qa.project;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import org.testng.annotations.Test;
 import qa.project.models.AdvancedSearchData;
-import qa.project.models.AdvancedSearchResult;
 import qa.project.models.MovieSearchResponse;
-import qa.project.services.AdvancedSearch;
-import retrofit2.Call;
-
 import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.testng.Assert.*;
 
 
 public class ApiTest1 {
     private ImdbApi imdbApiClient = new ImdbApi();
-    private String apiKey = "k_83pv5z04";
+    private String apiKey = "k_kw0qy43q";
 
     @Test(description = "Search Movie inception 2010")
     public void SearchMovie1() throws IOException {
@@ -63,14 +51,13 @@ public class ApiTest1 {
 
     @Test(description = "Advanced Search genres")
     public void AdvancedSearchMovie2() throws IOException {
-        AdvancedSearchData advancedSearch3 = imdbApiClient.movieAdvancedSearch.advancedSearchMovie2(apiKey, "comedy, thriller").execute().body();
+        AdvancedSearchData advancedSearch3 = imdbApiClient.movieAdvancedSearch.advancedSearchMovie2(apiKey, "comedy,thriller").execute().body();
         System.out.println(advancedSearch3);
+        //For getting "Result is correct" - set get(0); for getting else result - set get(1)
         if (advancedSearch3.getResults().get(0).getGenres().contains("Comedy") || advancedSearch3.getResults().get(0).getGenres().contains("Thriller")) {
             System.out.println("Result is correct");
         }
-        if (advancedSearch3.getResults().get(0).getGenres().contains("Comedy") && advancedSearch3.getResults().get(0).getGenres().contains("Thriller")) {
-            System.out.println("Result is correct");
-        } else {
+           else {
             String title = advancedSearch3.getResults().get(0).getTitle();
             String genreList= advancedSearch3.getResults().get(0).getGenres();
             System.out.println(title + " has differ genres " + genreList);
