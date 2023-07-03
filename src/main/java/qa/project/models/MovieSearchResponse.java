@@ -1,5 +1,7 @@
 package qa.project.models;
+
 import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class MovieSearchResponse {

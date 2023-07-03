@@ -3,6 +3,7 @@ package qa.project;
 import org.testng.annotations.Test;
 import qa.project.models.AdvancedSearchData;
 import qa.project.models.MovieSearchResponse;
+
 import java.io.IOException;
 
 import static org.testng.Assert.*;
@@ -56,12 +57,11 @@ public class ApiTest1 {
         //For getting "Result is correct" - set get(0); for getting else result - set get(1)
         if (advancedSearch3.getResults().get(0).getGenres().contains("Comedy") || advancedSearch3.getResults().get(0).getGenres().contains("Thriller")) {
             System.out.println("Result is correct");
-        }
-           else {
+        } else {
             String title = advancedSearch3.getResults().get(0).getTitle();
-            String genreList= advancedSearch3.getResults().get(0).getGenres();
+            String genreList = advancedSearch3.getResults().get(0).getGenres();
             System.out.println(title + " has differ genres " + genreList);
         }
     }
-    }
+}
 
